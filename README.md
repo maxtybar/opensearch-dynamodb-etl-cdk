@@ -34,3 +34,11 @@ cdk bootstrap
 ```
 cdk deploy -c UserArn=$(aws sts get-caller-identity --query Arn --output text) --require-approval never
 ```
+
+# How to delete
+
+From within the root project folder (``opensearch-dynamodb-etl-cdk``), run the following command:
+
+```
+cdk destroy --force
+```
