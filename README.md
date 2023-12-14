@@ -1,14 +1,36 @@
-# Welcome to your CDK TypeScript project
+# Amazon DynamoDB zero-ETL integration with Amazon OpenSearch Service using AWS CDK
 
-This is a blank project for CDK development with TypeScript.
+This code repository is associated with the [following](https://medium.com/@maxtybar/amazon-dynamodb-zero-etl-integration-with-amazon-opensearch-service-with-amazon-opensearch-and-cdk-7b1c8bdd45da) Medium post.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+# Architecture
 
-## Useful commands
+![Image](./diagram/dynamo-opensearch-etl.png)
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
+# Prerequisites
+
+Deployment has been tested on MacOS and Linux machines. Installation guide assumes you have AWS account and Administrator Access to provision all the resources. 
+Provisioning will take somewhere from 8 to 10 minutes.
+
+=============
+
+* [node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) >= 16.0.0
+* [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) >= 8.0.0
+* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) >= 2.0.0
+* [AWS CDK](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html) >= 2.66.1
+
+# Installation
+
+Clone current repo. From within the root project folder (``opensearch-dynamodb-etl-cdk``), run the following commands:
+
+```
+npm install
+```
+Note - if you have `npm ERR!` erros related to overlapping dependencies, run `npm install --force`.
+
+```
+cdk bootstrap
+```
+
+```
+cdk deploy -c UserArn=$(aws sts get-caller-identity --query Arn --output text) --require-approval never
+```

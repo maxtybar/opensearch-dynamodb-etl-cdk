@@ -383,10 +383,6 @@ dynamodb-pipeline:
             sts_role_arn: "{pipeline_role_arn}"\
 """
 
-
-    
-
-
     return osis_client.create_pipeline(
         PipelineName=pipeline_name,
         MinUnits=1,
