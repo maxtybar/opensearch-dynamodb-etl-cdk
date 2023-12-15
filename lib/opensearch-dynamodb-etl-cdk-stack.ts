@@ -104,6 +104,7 @@ export class OpensearchDynamodbETLCdkStack extends cdk.Stack {
     const ingestionLogGroup = new cdk.aws_logs.LogGroup(this, 'IngestionPipelineLogGroup', {
       logGroupName: this.logGroupName,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
+      retention: cdk.aws_logs.RetentionDays.ONE_DAY
     });
 
     // Create OpenSearch Ingestion Pipeline Role
